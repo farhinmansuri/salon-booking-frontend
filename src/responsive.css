@@ -1,0 +1,110 @@
+/* Tablet navigation: keep the full admin menu usable without squeezing the page. */
+@media (min-width: 621px) and (max-width: 1024px) {
+  .nav-wrap { padding-inline: 24px; }
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 0;
+    background: transparent;
+    padding: 10px;
+  }
+  .menu-toggle span { width: 22px; height: 1px; background: var(--ink); }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 77px;
+    right: 18px;
+    width: min(380px, calc(100vw - 36px));
+    padding: 14px 20px 20px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 0 15px 25px rgba(40,32,26,.1);
+    align-items: stretch;
+    gap: 0;
+    flex-direction: column;
+  }
+  .main-nav.is-open { display: flex; }
+  .main-nav > a:not(.button), .main-nav .nav-signout, .nav-user-name {
+    padding: 12px 0;
+    text-align: left;
+    border-bottom: 1px solid #e9e4dd;
+  }
+  .main-nav .nav-cta { margin-top: 14px; }
+}
+
+/* Tablet content layouts. */
+@media (min-width: 621px) and (max-width: 850px) {
+  .hero-section {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .82fr);
+    gap: 24px;
+    padding-inline: 38px;
+  }
+  .hero-art { height: 340px; }
+  .service-grid, .service-grid-large { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-card-title { flex-direction: row; }
+  .service-image { height: 175px; }
+  .booking-grid { gap: 28px; padding-inline: 0; }
+  .booking-grid { grid-template-columns: minmax(180px, .7fr) minmax(0, 1.3fr); }
+  .booking-grid .form-row { grid-template-columns: minmax(0, 1fr); }
+  .appointment-card { grid-template-columns: minmax(140px, .7fr) minmax(0, 1fr); }
+  .appointment-actions { grid-column: 1 / -1; justify-content: flex-start; }
+  .availability-row { grid-template-columns: minmax(145px, .7fr) minmax(0, 1fr) auto; gap: 14px; padding-inline: 16px; }
+}
+
+/* Stack dense layouts before they become cramped on small tablets. */
+@media (min-width: 621px) and (max-width: 760px) {
+  .hero-section { grid-template-columns: 1fr; padding: 48px 34px 58px; }
+  .hero-art { width: 100%; max-width: none; height: 330px; }
+  .hero-vertical { display: none; }
+  .auth-layout { grid-template-columns: 1fr; gap: 26px; max-width: 600px; }
+  .auth-aside { min-height: 230px; }
+  .auth-aside > p { font-size: 36px; margin: 24px 0; }
+  .auth-form-wrap { max-width: none; }
+  .booking-grid { grid-template-columns: 1fr; gap: 20px; }
+  .booking-grid .form-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .booking-aside { padding: 0; }
+  .booking-aside > p { max-width: 480px; }
+}
+
+/* Small screens: allow all content to fit without horizontal scrolling. */
+@media (max-width: 620px) {
+  .main-nav .nav-user-name { padding: 12px 0; border-bottom: 1px solid #e9e4dd; }
+  .page-wrap { padding-inline: clamp(16px, 5vw, 22px); }
+  .section-wrap { padding-inline: clamp(16px, 5vw, 24px); }
+  .hero-section { padding-inline: clamp(18px, 6vw, 25px); }
+  .service-grid, .service-grid-large { grid-template-columns: minmax(0, 1fr); }
+  .service-card-title { flex-direction: row; }
+  .booking-grid .form-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .booking-grid .form-row > * { min-width: 0; }
+  .appointment-card { min-width: 0; }
+  .appointment-details, .appointment-actions { min-width: 0; }
+  .appointment-actions { gap: 10px 14px; }
+  .profile-fields { min-width: 0; }
+  .profile-fields strong { overflow-wrap: anywhere; }
+  .tool-card { grid-template-columns: 30px minmax(0, 1fr) 16px; gap: 12px; padding: 18px; }
+  .dashboard-greeting h1 { overflow-wrap: anywhere; }
+  .admin-title-row > div { min-width: 0; }
+  .admin-title-row .button { width: 100%; }
+  .list-toolbar input { min-width: 0; width: min(46vw, 180px); }
+  .footer-inner { padding-inline: 18px; }
+  .modal-backdrop { padding: 10px; }
+  .modal-panel { width: 100%; max-height: calc(100dvh - 20px); padding-inline: 18px; }
+}
+
+@media (max-width: 380px) {
+  .brand { gap: 7px; font-size: 10px; }
+  .brand-mark { width: 28px; height: 28px; }
+  .hero-copy h1 { font-size: 48px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .hero-note { padding-left: 2px; }
+  .section-heading h2 { font-size: 34px; }
+  .booking-grid .form-row { grid-template-columns: minmax(0, 1fr); }
+  .dashboard-stats > div { min-width: 0; }
+  .dashboard-stats strong { overflow-wrap: anywhere; }
+  .appointment-actions { justify-content: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
